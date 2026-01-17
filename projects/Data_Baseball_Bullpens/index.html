@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data and Baseball Bullpens | Brian Dexheimer Portfolio</title>
+    <meta name="description" content="Case study for Data and Baseball Bullpens">
+    <link rel="stylesheet" href="../../css/project.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="brand">
+            <a href="../../index.html" class="site-title">Brian Dexheimer</a>
+        </div>
+        <nav class="site-nav" aria-label="Main navigation">
+            <ul class="nav-list">
+                <li><a href="../../index.html#work">Back to Work</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article class="case-study">
+            <header class="case-study-header">
+                <div class="container">
+                    <div class="header-content">
+                        <h1 class="project-title-large">Data and Baseball Bullpens <br>Complexity and Overlooked Experiences</h1>
+                        <p class="project-subtitle-large">Data experience design that explains and questions baseball's analytical approach to bullpens, explains data literacy and machine learning algorithm concepts, and entices and inspires baseball fans to dive deepner into data. <br> <br> <a href="https://observablehq.com/@briandexheimer/data-and-baseball-bullpens">Full Experience Here</a></p>
+                    </div>
+                </div>
+                
+                <figure class="hero-figure">
+                    <video 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline 
+                        preload="metadata"
+                        class="portfolio-video">
+                        <source src="sankey_trim.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </figure>
+            </header>
+
+            <section class="section meta-section">
+                <div class="container grid-container">
+                    <div class="meta-block">
+                        <h2 class="small-label">Role</h2>
+                        <p>Data Experience Designer</p>
+                    </div>
+                    <div class="meta-block">
+                        <h2 class="small-label">Collaborators</h2>
+                        <p>Solo project</p>
+                    </div>
+                    <div class="meta-block">
+                        <h2 class="small-label">Timeline</h2>
+                        <p>1 month</p>
+                    </div>
+                    <div class="meta-block">
+                        <h2 class="small-label">Methods and Tools</h2>
+                        <p>Methods: network analysis, machine learning clustering (k-means)<br><br> Tools: python, javascript, d3.js, svg, Observable</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Context & Problem</h2>
+                        <p> <i>How might we use data visualizations and experiences that make complex topics accessible to diverse audiences while helping develop data literacy skills? </i> <br> <br> <br> We are surrounded by Big Data and interconnected systems, and understanding these connections has become increasingly important for making sense of contemporary challenges. Traditional visualization methods struggle with more complex data, both for conveying the meaning as well as for developing data literacies and instincts to the audience. </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Research & Process</h2>
+                        <p>Reading of Manual Lima's work on visual complexity, data narratives from Pudding.cool, Nightingale, and journalism organizations like NY Times, and more inspired a focus on several themes: <br> <br> <i> Literacy and Accessibility </i> : How can data visualizations on complex topics be understandable and accessible to diverse audiences, but also offer accommodating depth to learn and develop expertise and literacy? <br><br> <i> Algorithmic Interpretation </i>: How can data visualizations help audiences understand and evaluate computational processes? What topics could uniquely incorporate algorithm usage?<br><br> <i> Gamified and Interactive Data Sandboxes </i>: How can data visualizations leverage play and exploration to help audiences develop an intuitive understanding of data dynamics?<br><br> <i> Trust and Transparency </i>:  How can data visualizations include notes on data sources, collection and analysis methods, and representation choices to build confidence in audiences? </p>
+                    </div>
+
+                    <div class="media-grid">
+                        <figure class="grid-item">
+                            <img src="venndiagram_baseballdata2.png" alt="Venn diagram showing the Opportunity to use Baseball, a sport deeply rooted in analytics, to entice and inspire interest in Data" loading="lazy">
+                            <figcaption>Concept Framing: The opportunity to inspire interest from Baseball fans in Data</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="whybullpens.png" alt="Description explaining why studying baseball bullpens is valuable" loading="lazy">
+                            <figcaption>Baseball bullpens as a story of labor in a quantified industry with high visibility</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="thematicapproaches.png" alt="Description of thematic approaches" loading="lazy">
+                            <figcaption>Thematic approaches based on inspiration from readings and media</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Data Sources and Prep</h2>
+                        <p>There were two primary data sources utilized: <br><br> Every single event log of MLB games from 2005-2015 via <a href="https://www.kaggle.com/datasets/bdilday/retrosheet-events-1970-2015/data?select=retrosheet-events-plus-woba-2005_2015.csv">Kaggle Retrosheet Game Logs</a>  and the player ID translation files via <a href="https://www.kaggle.com/datasets/bdilday/retrosheet-events-1970-2015/data?select=master.csv">Kaggle Retrosheet Player ID_Player Name info</a>. <br><br> <a href="https://pypi.org/project/pybaseball/2.0.0/">Pybaseball API</a> was used to access data from FanGraphs, primarily via pitching_stats, chadwick_register, team_pitching. <br><br> I developed a python script to parse the >2 million game logs, determine relief pitcher appearances, and then calculate statistics such as the variance of inning of entry, average days of rest, pitcher succession relationships, as well as associate typical performance statistics with each relief pitcher.</p>
+                     </div>
+                    <figure class="media-wide">
+                        <img src="datapipeline.png" alt="Pipeline diagram showing how the raw data sources were transformed into datasets via a python script" loading="lazy">
+                        <figcaption>Data pipeline: from data sources to data sets</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Design & Implementation</h2>
+                        <p>After cleaning the data into usable data sets, I used javascript, d3.js, three.js and svg code on the Observable platform to explore several network relationships: <br><br> <i><b> Bullpen succession network</b></i>: What relationships within a bullpen are strongest? Whose roles are most consistent (or not)? Across teams and years, which have the most consistency? <br><br> <i><b> Archetype Creation based on psychological toll of pressure, uncertainty, and team competitiveness</b></i>: How can machine learning clustering techniques be applied to overlooked human experiences in a deeply analytical industry? <br><br> <i><b> Archetype changes over individuals' careers </b></i>: What trends exist for career changes based on the created archetypes? At the individual level, who has longevity and archetype stability vs brief careers or instability? <br><br> <i><b> Team bullpen makeup and player movement</b></i>: Based on the archetypes, what are the makeups of team bullpens per year? How do they relate to team success? Who gets traded per year? What pitchers have team stability vs many traders over their career? <br><br><br> Critique sessions influenced several design choices shows in the following media:<br><br><i>Progressive and controlled disclosure in the visualizations</i>: With the amount of data in these visualizations, showing it all at once can be overwhelming. By allowing user-controlled thresholds or filters, the user can better understand the dynamics of the data both at micro and macro levels. <br> <i>Explainers that lead into the visualizations</i>: Some users will not be data experts and some will not be baseball fanatics. By using text explainers, scrollytelling, and some basic animations, all users have the opportunity to move through the page, learn, and be inspired. Once again, progressive disclosure can be leveraged to hide some of this information from those more familiar with the content. <br> <i>Emphasize the human experience</i>: When looking at the macro-trends of the visualizations, it can be easy to lose the human experiences and this is a story of labor. By introducing several relief pitchers in the intro narrative, and then allowing the user to focus on particular pitchers in every visualization along with recommending several of interest, we can re-emphasize the unique, human experiences.</p>
+                    </div>
+
+
+                <div class="viz-list">
+                    <article class="viz-card">
+                        <figure class="viz-vid">
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                preload="metadata" 
+                                class="portfolio-video">
+                                <source src="bullpensuccessionnetwork.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </figure>
+                        <div class="viz-details">
+                            <h3 class="viz-title">Bullpen Succession Network</h3>
+                            <p class="viz-summary">Animated, interactive horizontal arc diagram showing every relief succession/handoff for a given team/year. <br><br> Provides user the ability to select a team/year to invite exploration into their favorite teams and memorable seasions. <br><br> Allows user to tweak the threshold levels for the nodes and links to dive into the most common and important nodes and links. <br><br></p>
+                        </div>
+                    </article>
+
+                    <article class="viz-card">
+                        <figure class="viz-vid">
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                preload="metadata"
+                                class="portfolio-video">
+                                <source src="archetypecreation_kmeans.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </figure>
+                        <div class="viz-details">
+                            <h3 class="viz-title">Archetype Creation - K Means Clustering of Psychological Dimensions</h3>
+                            <p class="viz-summary">Animated, interactive 3D viz showing K-Means clustering in action. The centroids move, pithcer-season 'dots' update color to their new cluster until convergence.<br><br> Clear color differentiation with each dimension mapping to a visual attribute: <br> <i> Pressure (gmLI)</i>: brightness and pulsing rate <br> <i>Role Uncertainty</i>: opacity <br> <i>Team competitiveness</i>: shape consistency/smoothness <br><br> Intro sections explain the methodology through a combination of scrollytelling with animations that describe the dimensions, text with formulas including the methodology and K-means details (some of which are progressively disclosed via disclosure triangles), and 1D K-Means plots,<br><br>Allows the user to tweak 'k', or the number of clusters, while also providing guidance</p>
+                        </div>
+                    </article>
+
+                    <article class="viz-card">
+                        <figure class="viz-vid">
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                preload="metadata" 
+                                class="portfolio-video">
+                                <source src="sankey.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </figure>
+                        <div class="viz-details">
+                            <h3 class="viz-title">Player Archetype Changes - Sankey</h3>
+                            <p class="viz-summary"> Pitchers generally do not remain as a single archetype over their entire career. This animated, sankey visualization shows every pitcher's archetype per year, and their movement between seasons<br><br>Dynamically updates the archetypes and color representations based on the K-Means algorithm from the previous step, and also includes Starters and Inactive to show pitchers who 'fell' or 'rose' from/to being a starter, as well as those who 'fell' or 'rose' from/to the MLB <br><br> Allows user to filter by specific players to emphasize their career path <br><br></p>
+                        </div>
+                    </article>
+
+                    <article class="viz-card">
+                        <figure class="viz-vid">
+                            <video 
+                                autoplay 
+                                loop 
+                                muted 
+                                playsinline 
+                                preload="metadata"
+                                class="portfolio-video">
+                                <source src="radial.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </figure>
+                        <div class="viz-details">
+                            <h3 class="viz-title">Bullpen Movement - Radial</h3>
+                            <p class="viz-summary">Animated, interactive radial visualization showing movement between teams and bullpen makeup based on archetypes <br><br> Provides user the ability to hover over particular teams to understand bullpen makeup, transactions, and bullpen/team success <br><br> Allows user to filter by players and follow their journeys <br><br></p>
+                        </div>
+                    </article>
+                </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Outcome & Impact</h2>
+                        <p>Users of the page have stated increased interest in learning about machine learning algorithms and incorporating human experiences into typically analytical driven evaluations. They also have stated their interest was fully captured based on the aesthetics, animations, and interactivity.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="container grid-container">
+                    <div class="content-text">
+                        <h2 class="section-label">Reflection</h2>
+                        <p>Data visualizations and experiences have the power to not only educate on the specific content, but also can teach data literacy concepts and inspire learning more. Data aesthetics are not just flashy, but can actually capture the audience's interest. <br> <br> Moving forward for similar data projects, I think expanding from interactivity and animation to include a simulation would be interesting. In this case, users perhaps could make some choices at the beginning, observe what archetype they become, make another choice, see how that changes, deal with randomness of baseball events and injuries, etc... and observe how one's career would pan out. <br><br> <i><b>What other data, experiences, and stories are we overlooking, both in baseball and beyond? </b></i> <br> <i>"There was but one question he left unasked, and it vibrated between his lines: if gross miscalculations of a person's value could occur on a baseball field, before a live audience of thirty thousand, and a television audience of millions more, what did that say about the measurement of performance in other lines of work? If professional baseball players could be over or under valued, who couldn't?"</i> - Michael Lewis about Bill James, Moneyball</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-links">
+                <a href="../../index.html#work">Back to All Projects</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
