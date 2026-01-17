@@ -1,0 +1,335 @@
+/* --- Design Tokens --- */
+:root {
+    --bg: #0f0f0f;
+    --text: #e0e0e0;
+    --text-dim: #888;
+    --border: #222;
+    --accent: #fff;
+    
+    --font-main: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Grid System */
+    --gutter: 2rem;
+    --side-margin: 6vw; /* This is your "border" space */
+}
+
+/* --- Reset & Base --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Layout Engine --- */
+/* The 14-column layout: [Margin] + 12 Content Columns + [Margin] */
+.site-header, 
+.container,
+.footer-grid {
+    display: grid;
+    grid-template-columns: var(--side-margin) repeat(12, 1fr) var(--side-margin);
+    column-gap: var(--gutter);
+}
+
+.section {
+    padding: 8rem 0;
+    border-top: 1px solid var(--border);
+}
+
+/* --- Header --- */
+.site-header {
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+}
+
+.brand { grid-column: 2 / span 8; }
+.site-nav { grid-column: 10 / span 4; justify-self: end; }
+
+.site-title { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+.site-role { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; }
+
+.nav-list { display: flex; gap: 2rem; list-style: none; }
+.nav-list a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+}
+.nav-list a:hover { border-bottom-color: var(--accent); }
+
+/* --- Intro --- */
+.intro-content { 
+    grid-column: 2 / span 12; 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); 
+    column-gap: var(--gutter);
+    align-items: top;      /* Vertically centers text against the image */
+}
+.intro-text { 
+    font-size: clamp(0.75rem, 4vw, 1.25rem); 
+    line-height: 1.3; 
+    letter-spacing: 0em;
+    grid-column: 1 / span 8;
+}
+.portrait-figure {
+    grid-column: 10 / span 3; 
+    background: #1a1a1a;
+    /* Added to ensure the container crops any overflow */
+    overflow: hidden; 
+    border-radius: 12px; 
+}
+
+.portrait-figure img {
+    width: 100%;
+    /* FIXED: Added % unit and aspect-ratio directly to the image */
+    height: 100%; 
+    object-fit: contain;
+    /* Redundant but good for safety */
+    display: block; 
+    border-radius: 12px; 
+}
+
+/* --- Projects --- */
+.section-label {
+    grid-column: 2 / span 12;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 4rem;
+}
+
+.project-list { grid-column: 2 / span 12; }
+
+.project-card {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+    margin-bottom: 12rem;
+    align-items: start;
+}
+
+.project-image { 
+    grid-column: 1 / span 8; 
+    aspect-ratio: 16 / 9;
+}
+
+.project-image img{
+    width: 100%;
+    height: 100;
+    object-fit: cover;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--border);
+}
+
+.project-details { grid-column: 10 / span 3; }
+
+/* Alternating Project Layout */
+.project-card:nth-child(even) .project-image { grid-column: 5 / span 8; }
+.project-card:nth-child(even) .project-details { grid-column: 1 / span 4; grid-row: 1; }
+
+.project-title { font-size: 1.75rem; margin-bottom: 1rem; }
+.project-summary { color: var(--text-dim); margin-bottom: 2rem; }
+.project-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+/*
+/* --- About & Skills --- */
+.about-grid { 
+    grid-column: 2 / span 12; 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+}
+
+.about-bio { grid-column: 1 / span 7; font-size: 1.25rem; }
+.skills-block { grid-column: 10/ span 2; }
+
+.small-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.5rem; }
+.section-label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.5rem; }
+.skills-list { list-style: none; }
+.skills-list li { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+*/
+
+/* --- EXPLORATION GRID --- */
+.exploration-section {
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--border);
+}
+
+.exploration-header {
+    grid-column: 2 / span 12;
+    margin-bottom: 3rem;
+}
+
+.exploration-grid {
+    grid-column: 2 / span 12;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    column-gap: var(--gutter);
+    row-gap: 4rem;
+}
+
+.exploration-card {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.exploration-card:hover {
+    transform: translateY(-4px); /* Subtle lift on hover */
+}
+
+.exploration-image {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Slightly more vertical/square than main projects */
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--border);
+}
+
+.exploration-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.exploration-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-main) !important;
+}
+
+.exploration-caption {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+}
+
+/* Mobile responsive: Switch to 1 column on small screens */
+@media (max-width: 768px) {
+    .exploration-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- About & Skills Enhancements --- */
+.about-grid { 
+    grid-column: 2 / span 12; 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+    row-gap: 8rem; /* Adds space between bio and client row */
+}
+
+.about-bio { grid-column: 1 / span 7; font-size: 1rem; }
+.skills-block { grid-column: 10 / span 3; }
+
+/* Client Logo Row Positioning */
+.client-history {
+    grid-column: 1 / span 12;
+}
+
+.client-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--gutter);
+    align-items: center;
+
+}
+
+/* Logo alignment: One column wide, starting on odd columns.
+   This creates the "one column in between" gap.
+*/
+.client-logo:nth-child(1) { grid-column: 1 / span 1; }
+.client-logo:nth-child(2) { grid-column: 3 / span 1; }
+.client-logo:nth-child(3) { grid-column: 5 / span 1; }
+.client-logo:nth-child(4) { grid-column: 7 / span 1; }
+.client-logo:nth-child(5) { grid-column: 9 / span 1; }
+.client-logo:nth-child(6) { grid-column: 11 / span 1; }
+
+.client-logo {
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.client-logo:hover {
+    opacity: 1;
+}
+
+/* Mobile: Collapse the 'one-on, one-off' for better visibility */
+@media (max-width: 768px) {
+    .client-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    .client-logo {
+        grid-column: auto !important; /* Reset the manual grid placement */
+    }
+}
+
+/* --- Footer --- */
+.site-footer { padding: 4rem 0; border-top: 1px solid var(--border); }
+.footer-links { grid-column: 2 / span 6; display: flex; gap: 2rem; }
+.footer-copy { grid-column: 8 / span 6; justify-self: end; color: var(--text-dim); font-size: 0.8rem; }
+
+
+/* --- Visual Details --- */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+    color: #444;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.image-logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.image-logo img{
+    width: 100%;
+    height: 100;
+    object-fit: fill;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 8px;
+    z-index: 200;
+}
+.skip-link:focus { top: 0; }
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    :root { --side-margin: 1.5rem; --gutter: 1rem; }
+    .project-card, .about-grid { display: block; }
+    .project-image { margin-bottom: 2rem; }
+    .site-nav { display: none; } /* Simplified for mobile */
+}
