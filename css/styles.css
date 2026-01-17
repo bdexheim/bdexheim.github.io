@@ -327,49 +327,48 @@ body {
 .skip-link:focus { top: 0; }
 
 /* --- Mobile --- */
+/* --- UNIVERSAL MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    /* Reset main layout containers */
-    .site-header, .container, .intro-content, .project-card, .about-grid, .exploration-grid {
+    /* 1. Reset all major grid containers to Flex stacks */
+    .site-header, 
+    .container, 
+    .intro-content, 
+    .project-card, 
+    .about-grid, 
+    .exploration-grid {
         display: flex !important;
         flex-direction: column !important;
-        padding: 0 1.5rem;
+        padding: 0 1.5rem !important;
+        width: 100% !important;
     }
 
-    /* Fix the Intro overlap (Text vs Portrait) */
+    /* 2. Fix Intro Portrait (Overlap Fix) */
     .intro-text {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
+        font-size: 1.1rem !important; /* Slightly smaller for narrow screens */
+        order: 2; /* Put text below portrait if preferred, or 1 for above */
+        width: 100% !important;
     }
     
     .portrait-figure {
-        width: 150px; /* Constrain portrait size on mobile */
-        height: 150px;
-        margin-bottom: 2rem;
+        grid-column: auto !important;
+        width: 120px !important; /* Fixed size for portrait view */
+        height: 120px !important;
+        margin-bottom: 2rem !important;
+        order: 1;
     }
 
-    /* Stack Project Cards */
+    /* 3. Responsive Project Cards */
     .project-image, .project-details {
         width: 100% !important;
-        grid-column: auto !important;
+        margin-left: 0 !important;
     }
-    
+
     .project-card {
-        margin-bottom: 4rem; /* Reduce vertical gap on mobile */
+        margin-bottom: 5rem !important;
+        gap: 1.5rem;
     }
 
-    /* Fix the alternating project layout for mobile */
-    .project-card:nth-child(even) .project-image,
-    .project-card:nth-child(even) .project-details {
-        grid-row: auto !important;
-    }
-
-    /* Client History: 2 columns instead of 6 */
-    .client-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 3rem;
-    }
-    
-    .client-logo {
-        grid-column: auto !important;
-    }
+    /* Fix alternating layouts so they all stack the same way on mobile */
+    .project-card:nth-child(even) .project-image { order: 1; }
+    .project-card:nth-child(even) .project-details { order: 2; }
 }
