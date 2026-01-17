@@ -322,43 +322,122 @@ figcaption {
 }
 
 /* --- 9. MOBILE --- */
-/* --- COMPREHENSIVE MOBILE OVERRIDES --- */
-/* --- UNIVERSAL MOBILE RESPONSIVENESS --- */
+/* --- COMPREHENSIVE MOBILE RESPONSIVENESS (PROJECT PAGES) --- */
 @media (max-width: 900px) {
-    /* Reset Exploration Rows */
-    .process-row, 
-    .results-row, 
+    /* 1. Reset Main Layout Containers */
+    /* We switch from Grid to Flex to prevent column overlaps and overflow */
+    .site-header, 
+    .container, 
+    .footer-grid, 
     .case-study-header, 
-    .meta-section .grid-container {
+    .meta-section .grid-container, 
+    .process-row, 
+    .results-row,
+    .viz-card,
+    .media-grid {
         display: flex !important;
         flex-direction: column !important;
-        padding: 0 1.5rem !important;
+        padding: 0 1.5rem !important; /* Standard mobile padding */
+        width: 100% !important;
         gap: 2rem !important;
     }
 
-    /* Remove all desktop-specific column starts and spans */
-    .brand, .site-nav, .header-content, .hero-figure,
-    .process-text, .process-media, .process-media-wide,
-    .section-header, .result-item, .meta-block {
+    /* 2. Global Header Fix */
+    /* Prevents Name and 'Back to Work' from overlapping by stacking them */
+    .brand, .site-nav {
+        grid-column: auto !important;
+        width: 100% !important;
+        display: block !important;
+        margin: 0 !important;
+    }
+
+    .site-nav {
+        display: flex !important;
+        justify-content: flex-start !important;
+        margin-top: 0.5rem !important;
+    }
+
+    /* 3. Title & Hero Image Alignment */
+    /* Ensures the title and hero figure use the full screen width */
+    .header-content, 
+    .hero-figure,
+    .case-study-header .container {
+        grid-column: auto !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .hero-figure {
+        margin-bottom: 3rem !important;
+    }
+
+    /* 4. Content Blocks & Grid Items */
+    /* Resets all internal grid spans so text and images don't squish */
+    .content-text,
+    .process-text, 
+    .process-media, 
+    .process-media-wide,
+    .section-header, 
+    .result-item,
+    .grid-item,
+    .viz-vid,
+    .viz-details {
         grid-column: auto !important;
         width: 100% !important;
         margin: 0 !important;
     }
 
-    /* Fix Image Heights for Portrait vs Landscape */
-    .hero-figure img, 
-    .process-media img, 
-    .result-item img {
-        height: auto !important; /* Allow natural height to prevent squashing */
-        max-height: 70vh; /* Prevent vertical images from being taller than the screen */
-        aspect-ratio: auto !important; 
-        object-fit: cover;
-    }
-
-    /* Metadata should stack tightly */
+    /* 5. Metadata Stacking */
+    /* Turns the horizontal metadata blocks into a clean vertical list */
     .meta-block {
+        width: 100% !important;
         padding: 1.5rem 0 !important;
         border-bottom: 1px solid var(--border);
     }
     .meta-block:last-child { border-bottom: none; }
+
+    /* 6. Image & Video Scaling */
+    /* Ensures media fills the width without exceeding the viewport height */
+    .hero-figure img, 
+    .process-media img, 
+    .result-item img,
+    .grid-item img,
+    .viz-vid {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 70vh; /* Prevents tall images from taking over the screen */
+        aspect-ratio: auto !important; 
+        object-fit: cover;
+    }
+
+    /* 7. Boundary & Caption Fixes */
+    /* Prevents figure captions from overlapping with the next sections */
+    figcaption {
+        margin-top: 1rem !important;
+        margin-bottom: 2rem !important;
+        padding-top: 0.5rem !important;
+        border-top: 1px solid var(--border);
+        display: block !important;
+    }
+
+    /* Force Video details to sit below the video */
+    .viz-card:nth-child(even) .viz-details {
+        grid-row: auto !important;
+    }
+
+    .viz-title {
+        font-size: 1.5rem !important; /* Slightly smaller for mobile boundaries */
+    }
+
+    /* 8. Footer Alignment */
+    .footer-links, .footer-copy {
+        width: 100% !important;
+        text-align: left !important;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
