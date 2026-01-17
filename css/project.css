@@ -323,7 +323,7 @@ figcaption {
 
 /* --- 9. MOBILE --- */
 /* --- COMPREHENSIVE MOBILE RESPONSIVENESS (PROJECT PAGES) --- */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     /* 1. Reset Main Layout Containers */
     /* We switch from Grid to Flex to prevent column overlaps and overflow */
     .site-header, 
