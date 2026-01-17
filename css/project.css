@@ -322,11 +322,50 @@ figcaption {
 }
 
 /* --- 9. MOBILE --- */
+/* --- COMPREHENSIVE MOBILE OVERRIDES --- */
 @media (max-width: 900px) {
-    .site-header, .container, .footer-grid {
-        display: block !important;
-        padding: 0 1.5rem;
+    /* 1. Reset the Grid Engine to a single column */
+    .site-header, 
+    .container, 
+    .footer-grid, 
+    .case-study-header, 
+    .meta-section .grid-container, 
+    .process-row, 
+    .results-row {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 1.5rem !important; /* Standard mobile gutter */
     }
-    .site-nav { margin-top: 1rem; }
-    .footer-copy { text-align: left; margin-top: 2rem; }
+
+    /* 2. Reset specific grid-column spans to full width */
+    .brand, .site-nav, .header-content, .hero-figure, 
+    .meta-block, .process-text, .process-media, .result-item,
+    .footer-links, .footer-copy, .content-text {
+        grid-column: auto !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* 3. Adjust Spacing */
+    .hero-figure { margin-bottom: 3rem; }
+    .meta-block { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+    .process-row, .results-row { gap: 2.5rem; }
+    
+    /* 4. Fix Navigation */
+    .site-nav {
+        justify-content: flex-start;
+        margin-top: 1rem;
+    }
+    
+    .footer-copy {
+        text-align: left;
+        margin-top: 2rem;
+    }
+
+    /* 5. Ensure images maintain aspect ratio without stretching */
+    .hero-figure img, .result-item img, .process-media img {
+        height: auto !important;
+        aspect-ratio: auto !important; /* Optional: allows images to show full height on mobile */
+    }
 }
